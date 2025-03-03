@@ -4,18 +4,40 @@ const Men_container = document.getElementById("Menu_container")
    const burger = document.getElementById('burger_span') // div<span>
     const itens_ul_ani = document.querySelector('ul')
      const List_ = document.querySelectorAll('li.list_')
-   
-     // fazer o sistema do search para ele criar um input do tipo pesquisa 
-      // quando clicar
+      const div_search = document.querySelector(".block_search")
+       const inp_search = document.querySelector('.isearch')
+
+
+ let obj_funcoes = {
+        // função para evento de clicar fora do conteudo 
+    f_event_cli_out(event,Arg1,Arg2,Arg3,Valor){
+        if(!Arg1.contains(event.target) && !Arg2.contains(event.target)){
+           Arg3.style.display = Valor
+           console.log("teste")
+        }
+    }
+ }
+
+document.addEventListener('click',(evento) =>{
+    List_.forEach(() =>{
+        let key_search = List_[1]
+        obj_funcoes.f_event_cli_out(evento,key_search,inp_search,div_search,"none")
+    })
+})
+
 List_.forEach((Lista, keys_list) => {
     Lista.addEventListener("click", () => {
         if(keys_list == 1){
-            console.log('key certa')
+            div_search.style.display = "flex"
+            div_search.classList.add('On_Animation')
+            inp_search.style.display = "block"
+            inp_search.focus()
+           
         }else{
-            console.log("key errada")
+            div_search.style.display = "none"
+            inp_search.style.display = "none"
         }
 
-       console.log(keys_list)
     })
 })
 

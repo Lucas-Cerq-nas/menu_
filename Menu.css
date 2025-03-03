@@ -91,4 +91,50 @@ ul > li > a:hover{
     text-shadow: 0px 0px 10px white;
 }
 
+div.block_search{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+}
 
+.block_search.On_Animation{
+    backdrop-filter: blur(1px);
+    
+    animation: Aparecer_search 0.6s linear;
+}
+
+@keyframes Aparecer_search {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.block_search > div.item_search{
+    position: relative;
+    width: 90%;
+    height: 50px;
+}
+
+.item_search > input.isearch{
+    position: absolute;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font: normal bold 17px Verdana;
+    color: white;
+    border-radius: 10px 0px;
+    background-color: transparent;
+    outline: none;
+}
+
+.isearch{
+    display: none;
+}

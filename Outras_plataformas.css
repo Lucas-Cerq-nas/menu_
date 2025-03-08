@@ -69,5 +69,9 @@ span.on_click_ani{
     top: -24%;
 }
 
+.Animar{
+    animation: efeitoPixel 10s linear infinite;
+}
+
 }
 

@@ -5,12 +5,35 @@
 }
 
 body{
-    color: white;
+    position: relative;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     background: linear-gradient(45deg, #000000fa 74%, #9aff00); 
+    color: white;
 }
+
+div.Anima{
+    position: absolute;
+    left: -10px;
+    width: 3px;
+    height: 3px;
+    opacity: 0.8;
+    background-color: rgb(127 255 90 / 81%);
+    animation: efeitoPixel 5s linear infinite;
+    z-index: -1;
+}
+
+@keyframes efeitoPixel {
+    0%{
+        transform: translateY(-100px);
+    }
+
+    100%{
+        transform: translateX(100vw);
+    }
+}
+
 
 menu{
     display: flex;
@@ -92,7 +115,7 @@ ul > li > a:hover{
 }
 
 div.block_search{
-    display: flex;
+    display: none;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;

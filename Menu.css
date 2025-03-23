@@ -163,3 +163,72 @@ div.block_search{
 .isearch{
     display: none;
 }
+
+/* Área para o profile*/
+
+div.container_profile{
+    
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    transform: translate(-50%,-60%);
+    transition: all 0.7s ease-in;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 400px;
+    height: 450px;
+    border: 2px solid white;
+    border-radius: 10px;
+    backdrop-filter: blur(1px);
+}
+
+.container_profile.Ativar_profile{
+    left: 50%;
+}
+
+.container_profile > div.itens_profile{
+    width: 380px;
+    height: 400px;
+    border-radius: 5px;
+
+}
+
+.itens_profile > div.alinhar_img{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    height: 60%;
+}
+
+.itens_profile img{
+    margin-top: 15px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.itens_profile > input{
+
+    background-color: white;
+}
+
+.itens_profile > .nomes{
+    padding: 15px;
+    width: 90%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.itens_profile > #Inome{
+    border-radius: 10px 10px 0px 10px;
+
+}
+
+.itens_profile > #Ilast{
+    border-radius: 10px 0px 10px 10px;
+}

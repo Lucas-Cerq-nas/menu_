@@ -6,12 +6,14 @@ const Men_container = document.getElementById("Menu_container")
      const List_ = document.querySelectorAll('li.list_')
       const div_search = document.querySelector(".block_search")
        const inp_search = document.querySelector('.isearch')
- 
+        const div_profile = document.querySelector('.container_profile')
+
+
  // variavel para o carrossel
  let contador = 0
  let obj_funcoes = {
         // função para evento de clicar fora do conteudo 
-    f_event_cli_out(event,Arg1,Arg2,Arg3,Valor,V_class){
+    f_event_cli_out(event,Arg1,Arg2,Arg3,V_class,Valor){
         if(!Arg1.contains(event.target) && !Arg2.contains(event.target)){
            Arg3.style.display = Valor
            Arg3.classList.remove(V_class)
@@ -19,15 +21,24 @@ const Men_container = document.getElementById("Menu_container")
     },
     f_event_carrossel(novoContador,itens_class,V_class){
         itens_class[contador].classList.remove(V_class)
-         contador = (novoContador + itens_class.length) % itens_class.length
+        contador = (novoContador + itens_class.length) % itens_class.length
         itens_class[contador].classList.add(V_class)
+        
+        //Sitaxe f_event_carrossel(contador + 1, item_class, "ON")
     }
  }
+
+
 
 document.addEventListener('click',(evento) =>{
     List_.forEach(() =>{
         let key_search = List_[1] // search
-  obj_funcoes.f_event_cli_out(evento,key_search,inp_search,div_search,"none",null)
+  obj_funcoes.f_event_cli_out(evento,key_search,inp_search,div_search,null,"none")
+
+  let key_profile = List_[2]
+  obj_funcoes.f_event_cli_out(evento,key_profile,div_profile,div_profile,"Ativar_profile")
+
+
     })
 })
 
@@ -41,6 +52,12 @@ List_.forEach((Lista, keys_list) => {
         }else{
             div_search.style.display = "none"
             inp_search.style.display = "none"
+        }
+
+        if(keys_list == 2){
+            div_profile.classList.add("Ativar_profile")
+        }else{
+            div_profile.classList.remove("Ativar_profile")
         }
 
     })
@@ -109,20 +126,35 @@ const obj_ani_Menu = {
     }
 }
 
+
+    // Sistema pra animação de pixels
+function Animacao_Pixel(checkStatus, Element_px, V_class, Much__px = 10){
+   
+    if(!checkStatus){
+        return; // se for falso, n execute essa função :) aprendi a fazer isso :D
+    }else{
+        let Timer_for =  setTimeout(() => {
+            for(let i = 0; i < Much__px; i++ ){
+                let pixels = document.createElement(Element_px)
+                pixels.classList.add(V_class)
+                // posições,delay,direções
+                pixels.style.top = Math.random() * 100 + "vh"
+                pixels.style.animationDelay = Math.random() * 3 + "s"
+                pixels.style.animationDuration = Math.random() * 2 + 3 + "s"
+                
+                document.body.appendChild(pixels)
+              }
+        }, 0);
+    }
+  
+}
+
+
     if(window.innerWidth > 767){
         document.body.style.transition = "width 0.2s linear"
     }else{
-  // Sistema pra animação de pixels
-    for(let i = 0; i < 10; i++ ){
-        let pixels  = document.createElement("div")
-         pixels.classList.add("Anima")
-         // posições,delay,direções
-         pixels.style.top = Math.random() * 100 + "vh"
-          pixels.style.animationDelay = Math.random() * 3 + "s"
-           pixels.style.animationDuration = Math.random() * 2 + 3 + "s"
-        
-        document.body.appendChild(pixels)
-      }
+        document.body.style.transition = "width 0.2s linear"
+        Animacao_Pixel(true,"div","Anima")
     }
 
     if(window.innerHeight > 100){
